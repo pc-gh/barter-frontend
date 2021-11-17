@@ -4,7 +4,7 @@ idea：壹無（易物），barter。
 
 风格：繁体古风。
 
-logo：双手相扣。
+logo：双手相扣。200*200.
 
 用户身份：普通用户、管理员。
 
@@ -31,3 +31,21 @@ https://modao.cc/app/eb7193222e6c979b5cabaaaf4a30b54f744a94e5?simulator_type=dev
 ```
 
 1520*692
+
+#### 开发进度
+
+| 时间       | 任务                                             | 完成情况 | 备注 |
+| ---------- | ------------------------------------------------ | -------- | ---- |
+| 2021.11.17 | vue-cli脚手架骨架搭建、element引入、页面初步布局 | 完成     |      |
+|            |                                                  |          |      |
+|            |                                                  |          |      |
+|            |                                                  |          |      |
+
+#### Q&A
+
+* vue use ajax
+* data exchange
+* component layout(fixed)
+* CORS
+* package(fixed)
+* ser_run_env

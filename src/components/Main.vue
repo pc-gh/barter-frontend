@@ -8,10 +8,25 @@
 
     </el-header>
   <el-main>
-      
-      <Look></Look>
 
-      </el-main>
+      <div v-show="show">
+        <Upload></Upload>
+        
+      </div>
+
+      <div v-show="show">
+        
+        <Mine></Mine>
+        
+      </div>
+
+      <div v-show="show">
+        
+        <Look></Look>
+        
+      </div>
+
+  </el-main>
   <el-footer>
       
       <FootPart></FootPart>
@@ -35,10 +50,8 @@ export default {
     name:'Main',
     data(){
         return{
-            
+          show:true
         }
-
-
     }
 }
 </script>
