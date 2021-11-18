@@ -2,9 +2,18 @@
 
   <el-row :gutter="20">
   <el-col :span="6"><img src="../assets/logo.png"></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple">看</div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple">传</div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple">我的</div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple">
+    <router-link to="/look">看</router-link>
+    
+    </div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple">
+    
+    <router-link to="/upload">传</router-link>
+    
+    </div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple">
+    <router-link to="/mine">我的</router-link>
+    </div></el-col>
   <!-- <el-col :span="6"><div class="grid-content bg-purple"></div></el-col> -->
 </el-row>
 
@@ -12,11 +21,11 @@
 
 <script>
 export default {
-    name:'HeadPart',
-    data(){
+    name: 'HeadPart',
+    data (){
 
-        return{
-            mgs:'head'
+        return {
+            
         }
     }
 }
@@ -25,10 +34,11 @@ export default {
 <style>
    .el-row {
     margin-bottom: 20px;
-    &:last-child {
+    
+  }
+  .el-row :last-child {
       margin-bottom: 0;
     }
-  }
   .el-col {
     border-radius: 4px;
   }

@@ -33,15 +33,15 @@ export default {
         HeadPart,FootPart,Look
 
     },
-    name:'Main',
-    data(){
+    name: 'Main',
+    data (){
 
-        return{
+        return {
 
         }
     }
 
-};
+}
 </script>
 
 <style>

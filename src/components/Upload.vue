@@ -4,10 +4,10 @@
 
 <script>
 export default {
-    name:'Upload',
-    data(){
+    name: 'Upload',
+    data (){
 
-        return{
+        return {
 
         }
     }

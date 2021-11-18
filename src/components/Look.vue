@@ -4,10 +4,10 @@
 
 <script>
 export default {
-    name:'Look',
-    data(){
+    name: 'Look',
+    data (){
 
-        return{
+        return {
 
         }
     }

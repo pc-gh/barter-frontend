@@ -7,9 +7,9 @@
 <script>
 export default {
     name: 'FootPart',
-    data(){
-        return{
-          msg:'foot'
+    data (){
+        return {
+         
         }
     }
 
@@ -19,10 +19,11 @@ export default {
 <style>
  .el-row {
     margin-bottom: 20px;
-    &:last-child {
+    
+  }
+  .el-row :last-child {
       margin-bottom: 0;
     }
-  }
   .el-col {
     border-radius: 4px;
   }

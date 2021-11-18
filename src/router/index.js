@@ -15,9 +15,32 @@ Vue.use(Router)
 export default new Router({
   routes: [
 {
-      path: '/',
-      name: 'Main',
-      component: Main
+      path: '/main',
+      name: 'main',
+      component: Main,
+      redirect: '/look',
+      children: [
+        {
+          path: '/look',
+          name: 'look',
+          component: () => import("@/components/Look.vue")
+        },
+        {
+
+          path: '/upload',
+          name: 'upload',
+          component: () => import("@/components/Upload.vue")
+
+        },
+        {
+
+          path: '/mine',
+          name: 'mine',
+          component: () => import("@/components/Mine.vue")
+
+        }
+
+      ]
     },
     {
       path:'/head',
@@ -54,7 +77,28 @@ export default new Router({
       component:Mine
 
 
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import("@/components/Login.vue")
+
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: () => import("@/components/Register.vue")
+
+    },
+    {
+      path: '/',
+      name: 'Login',
+      component: () => import("@/components/Login.vue")
+
+
     }
+
+ 
 
   ]
 })

@@ -4,10 +4,10 @@
 
 <script>
 export default {
-    name:'Mine',
-    data(){
+    name: 'Mine',
+    data (){
 
-        return{
+        return {
 
         }
     }

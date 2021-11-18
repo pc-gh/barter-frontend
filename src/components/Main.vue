@@ -4,12 +4,11 @@
   <el-header>
       
       <HeadPart></HeadPart>
-      <!-- Header -->
 
     </el-header>
   <el-main>
-
-      <div v-show="show">
+    <router-view></router-view>
+      <!-- <div v-show="show">
         <Upload></Upload>
         
       </div>
@@ -24,7 +23,7 @@
         
         <Look></Look>
         
-      </div>
+      </div> -->
 
   </el-main>
   <el-footer>
@@ -47,9 +46,9 @@ export default {
         HeadPart,FootPart,Look
 
     },
-    name:'Main',
-    data(){
-        return{
+    name: 'Main',
+    data (){
+        return {
           show:true
         }
     }
@@ -70,23 +69,19 @@ export default {
     text-align: center;
     line-height: 200px;
   }
-  
   .el-main {
     /* background-color: #E9EEF3; */
     color: #333;
     text-align: center;
     line-height: 480px;
   }
-  
   body > .el-container {
     margin-bottom: 40px;
   }
-  
   .el-container:nth-child(5) .el-aside,
   .el-container:nth-child(6) .el-aside {
     line-height: 260px;
   }
-  
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
   }
