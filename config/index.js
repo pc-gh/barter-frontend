@@ -10,7 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/barter':{
+        target: "http://120.79.197.164:9285",
+        changeOrigin:true,
+        pathRewrite:{
+            '^/barter':'/barter'
+        }
+    }
+
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
