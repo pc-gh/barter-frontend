@@ -117,7 +117,7 @@ export default {
         let rout = this.$router;
         if (this.ruleForm.title !== null && this.ruleForm.content !== null){
             // alert("都非空！！！")
-            this.$axios.post('/barter/post/addPost',{
+            this.$axios.post('http://120.79.197.164:9285/barter/post/addPost',{
             // userId: 0,
             // type: '测试',
             // title: this.ruleForm.title,

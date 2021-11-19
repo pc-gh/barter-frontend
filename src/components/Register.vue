@@ -29,12 +29,19 @@
   </el-form-item>
 </el-form>
 
+    <FootPart></FootPart>
     </div>
 </template>
 
 <script>
+
+import FootPart from '@/components/Foot.vue'
+
 export default {
     name: 'Register',
+    components: {
+      FootPart
+    },
     data() {
       var checkAge = (rule, value, callback) => {
         if (!value) {
@@ -111,7 +118,7 @@ export default {
         // });
         let rout  = this.$router;
 
-        this.$axios.post('/barter/user/register',{
+        this.$axios.post('http://120.79.197.164:9285/barter/user/register',{
             userName: this.ruleForm.pass,
             password: this.ruleForm.checkPass,
             sex: this.ruleForm.sex,
