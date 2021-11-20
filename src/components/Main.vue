@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
  .el-header, .el-footer {
     /* background-color: #B3C0D1; */
     color: #333;
@@ -73,7 +73,7 @@ export default {
     /* background-color: #E9EEF3; */
     color: #333;
     text-align: center;
-    line-height: 480px;
+    line-height: 40px;
   }
   body > .el-container {
     margin-bottom: 40px;

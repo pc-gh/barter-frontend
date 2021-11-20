@@ -1,4 +1,5 @@
 <template>
+<div>
     <el-table
     :data="tableData"
     stripe
@@ -19,6 +20,12 @@
     </el-table-column> -->
   </el-table>
 
+<el-pagination
+  background
+  layout="prev, pager, next"
+  :total="100">
+</el-pagination>
+</div>
 </template>
 
 <script>
@@ -42,14 +49,25 @@ export default {
           date: '2016-05-03',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄'
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1516 弄'
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1516 弄'
         }]
       }
     }
 }
 </script>
 
-<style>
-  
+<style scoped>
+  div{
+
+    left: 28%;
+  }
 
 
 </style>
