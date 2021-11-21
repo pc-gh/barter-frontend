@@ -31,6 +31,7 @@ export default {
     components: {
       FootPart
     },
+
     data() {
     //   var checkAge = (rule, value, callback) => {
     //     if (!value) {
@@ -101,6 +102,7 @@ export default {
         //   }
         // });
         let rout = this.$router;
+        let store = this.$store;
         console.log('进入登录点击事件');
         this.$axios.post('http://120.79.197.164:9285/barter/user/login',{
           userName: this.ruleForm.pass,
@@ -111,7 +113,10 @@ export default {
           if(response.data.data !== null){
               rout.push('/main');
               alert("欢迎回来："+response.data.data.realName);
-              console.log(response.data.data);
+              store.dispatch('saveUserInfo',response.data.data);
+              // console.log(response.data.data);
+              // this.$store
+
           }else{
               alert("账号或密码错误！");
           }

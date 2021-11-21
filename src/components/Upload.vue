@@ -43,8 +43,13 @@
     
 </template>
 
+
+
+
 <script>
 // import func from 'vue-editor-bridge';
+let moment = require("moment");
+
 export default {
     name: 'Upload',
     data() {
@@ -117,6 +122,8 @@ export default {
         let rout = this.$router;
         if (this.ruleForm.title !== null && this.ruleForm.content !== null){
             // alert("都非空！！！")
+            var timeNow = moment(new Date().getTime()).format('YYYY-MM-DD HH:mm');
+            console.log();
             this.$axios.post('http://120.79.197.164:9285/barter/post/addPost',{
             // userId: 0,
             // type: '测试',
@@ -125,21 +132,29 @@ export default {
             // detailContext: this.ruleForm.content,
             // status: 1
 
-            createTime: "string",
+            createTime: timeNow,
             detailContext: this.ruleForm.content,
             easyContext: this.ruleForm.title,
             // "id": 0,
-            modifyTime: "string",
-            status: 0,
+            modifyTime: timeNow,
+            status: 1,
             title: this.ruleForm.title,
-            type: "string",
-            userId: 0
+            type: "v1.0",
+            userId: this.$store.state.user.user.id
 
 
         }).then(function (response){
             console.log(response.data);
-            alert(response.data.msg);
+
+
+            if (response.data.msg === 'success'){
+
+              alert('帖子上传成功！');
             rout.push('/look');
+            }else{
+              alert(response.data.msg);
+
+            }
 
         });
         }
