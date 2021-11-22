@@ -118,27 +118,31 @@ export default {
         // });
         let rout  = this.$router;
 
-        this.$axios.post('http://120.79.197.164:9285/barter/user/register',{
-            userName: this.ruleForm.pass,
-            password: this.ruleForm.checkPass,
-            sex: this.ruleForm.sex,
-            tel: this.ruleForm.tel,
-            realName: this.ruleForm.realName,
-
-        }).then(function (response){
-            if(response.data.data !== 'error'){
-                alert("注册成功！！！");
-                rout.push('/login');
+        alert("本系统已关闭注册账号功能，请联系管理员开通账号!");
 
 
-            }else{
-                alert(response.data.msg)
+//          暂不支持注册账号，请联系管理员开放账号
+      //   this.$axios.post('http://120.79.197.164:9285/barter/user/register',{
+      //       userName: this.ruleForm.pass,
+      //       password: this.ruleForm.checkPass,
+      //       sex: this.ruleForm.sex,
+      //       tel: this.ruleForm.tel,
+      //       realName: this.ruleForm.realName,
 
-            }
+      //   }).then(function (response){
+      //       if(response.data.data !== 'error'){
+      //           alert("注册成功！！！");
+      //           rout.push('/login');
+
+
+      //       }else{
+      //           alert(response.data.msg)
+
+      //       }
 
 
 
-        })
+      //   })
 
 
       },
