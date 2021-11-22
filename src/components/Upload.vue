@@ -37,14 +37,9 @@
   </el-form-item>
 </el-form>
 
-
   </div>
-
     
 </template>
-
-
-
 
 <script>
 // import func from 'vue-editor-bridge';
@@ -92,7 +87,8 @@ export default {
       return {
         ruleForm: {
           title: '',
-          content: ''
+          content: '',
+          easyContext: ''
         //   age: ''
         },
         rules: {
@@ -123,7 +119,21 @@ export default {
         if (this.ruleForm.title !== null && this.ruleForm.content !== null){
             // alert("都非空！！！")
             var timeNow = moment(new Date().getTime()).format('YYYY-MM-DD HH:mm');
-            console.log();
+
+            console.log(this.ruleForm.content);
+
+            if(this.ruleForm.content.length>4){
+              for(var i = 0;i<4;i++){
+
+                this.ruleForm.easyContext += this.ruleForm.content[i];
+              }
+
+            }else{
+              this.ruleForm.easyContext = this.ruleForm.content;
+            }
+            this.ruleForm.easyContext += '......'; 
+            // console.log(this.ruleForm.content[5]);
+
             this.$axios.post('http://120.79.197.164:9285/barter/post/addPost',{
             // userId: 0,
             // type: '测试',
@@ -134,11 +144,11 @@ export default {
 
             createTime: timeNow,
             detailContext: this.ruleForm.content,
-            easyContext: this.ruleForm.title,
+            easyContext: this.ruleForm.easyContext,
             // "id": 0,
             modifyTime: timeNow,
             status: 1,
-            title: this.ruleForm.title,
+            title: this.ruleForm.title+'v1.0',
             type: "v1.0",
             userId: this.$store.state.user.user.id
 
