@@ -96,8 +96,13 @@ export default new Router({
       component: () => import("@/components/Login.vue")
 
 
-    }
+    },
+    {
+      path: '/detailPost',
+      name: 'DetailPost',
+      component: () => import("@/components/DetailPost.vue")
 
+    }
  
 
   ]

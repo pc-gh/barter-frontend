@@ -148,7 +148,9 @@ export default {
       },
       clickDbTab(row, column, cell, event){
         // console.log("呜呜呜："+row.id);
-        alert(row.detailContext);
+        // alert(row.detailContext);
+        this.$router.push({path:"/detailPost",query:{postId:row.id}});
+        // alert(row.id);
       },
       
       changeCurrentPage(val){
@@ -161,11 +163,8 @@ export default {
         // var MyclickPageQueue = this.MyclickPageQueue;
         this.lastPost = this.tableData[this.tableData.length-1].id;
 
-
         console.log("挂载完成，最后一个帖子id："+this.lastPost);
         // console.log("挂载完成第一页展示："+showTableData[0].title);
-        
-        
 
         // tableData = [];
         // console.log(this.MyclickPageQueue);
@@ -203,10 +202,8 @@ export default {
 
           }
 
-
           for(var i = 0;i<response.data.data.length;i++){
             this.showTableData.push(response.data.data[i]);
-
           }
           // this.showTableData = showTableData;
           // console.log(showTableData.length);
