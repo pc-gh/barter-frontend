@@ -21,7 +21,7 @@
   type="textarea"
   placeholder="请输入内容"
   v-model="ruleForm.content"
-  maxlength="30"
+  maxlength="100"
   show-word-limit
 >
 </el-input>
