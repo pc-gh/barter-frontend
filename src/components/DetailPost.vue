@@ -1,7 +1,7 @@
 <template>
 
   <div>
-      <el-page-header @back="goBack" content="帖子详情页面">
+      <el-page-header @back="goBack" content="帖子详情页">
 </el-page-header>
 
       <!-- <el-descriptions title="评论" :column=1></el-descriptions> -->
@@ -22,8 +22,9 @@
 
         <el-row >
             <el-col>
-                评论
+                添加评论
             <el-button type="primary" icon="el-icon-edit" circle v-on:click="addComment"></el-button>
+            收起
             <el-button type="warning" icon="el-icon-star-off" circle v-on:click="closeAddComment"></el-button>
 
             </el-col>
@@ -32,14 +33,12 @@
 <!-- <el-button type="primary">添加评论</el-button>
             <el-button type="danger">取消评论</el-button> -->
 
-<hr />
-    </div>
 
-    <div>
+            <div>
         <div>
-      <el-form :model="addCommentContent" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form status-icon label-width="100px" class="demo-ruleForm" v-show="isAddComment">
   
-  <el-form-item label="评论" prop="content">
+  <el-form-item label="评论内容" prop="commentContent">
 
 
     <!-- <el-input type="password" v-model="ruleForm.content" autocomplete="off"></el-input> -->
@@ -47,7 +46,7 @@
   type="textarea"
   placeholder="请输入内容"
   v-model="addCommentContent"
-  maxlength="30"
+  maxlength="60"
   show-word-limit
 >
 </el-input>
@@ -57,25 +56,25 @@
     <el-input v-model.number="ruleForm.age"></el-input>
   </el-form-item> -->
   <el-form-item>
-    <el-button type="primary" @click="submitForm()">提交</el-button>
-    <el-button @click="resetForm('ruleForm')">重置</el-button>
+    <el-button type="primary" @click="submitForm">提交</el-button>
+    <el-button @click="resetForm">重置</el-button>
   </el-form-item>
 </el-form>
 
   </div>
 
-
-
     </div>
-    <br />
 
+<hr />
+    </div>
 
-
+    
     <div v-for="comment in commentList" :key="comment.id">
 
         <div>
         <el-descriptions :column=1>
-    <el-descriptions-item label="用户名">{{comment.userId}}</el-descriptions-item>
+
+    <el-descriptions-item label="用户名">{{comment.userName}}</el-descriptions-item>
     <el-descriptions-item label="评论内容">{{comment.detailComment}}</el-descriptions-item>
     <el-descriptions-item label="时间">{{comment.createTime}}</el-descriptions-item>
 </el-descriptions>
@@ -101,6 +100,9 @@
 </template>
 
 <script>
+let moment = require("moment");
+
+
 export default {
     name: 'DetailPost',
     data(){
@@ -110,7 +112,9 @@ export default {
             post: '',
             commentList: [],
             isAddComment: false,
-            addCommentContent: ''
+            addCommentContent: '',
+            commentContent: '',
+            commentUserNameList: []
 
         };
 
@@ -134,24 +138,28 @@ export default {
 
 
         }).then((response)=>{
+            
+            
+            var strm = response.data.data.title;
+            response.data.data.title = strm.replace('v1.0','');
             this.post = response.data.data;
+            // this.post = response.data.data
+            // this.post = response.data.data;
 
-            // console.log(response.data.data);
+            console.log(response.data.data.title);
             // console.log(this.post);
         });
 
 
         this.$axios.post('http://120.79.197.164:9285/barter/comment/getCommentList',{
             pageNum: 1,
-            pageSize: 6,
+            pageSize: 20,
             postId: this.$route.query.postId,
 
         }).then((response)=>{
 
             this.commentList = response.data.data;
-            // console.log(this.commentList);
 
-            // console.log(response.data.data)
         });
 
     },
@@ -165,11 +173,41 @@ export default {
         
       },
       addComment(){
+        this.isAddComment = true
 
-          alert("添加评论！")
+          // alert("添加评论！")
       },
       closeAddComment(){
-          alert("关闭添加评论窗口！")
+        this.isAddComment = false
+          // alert("关闭添加评论窗口！")
+
+      },
+      resetForm(){
+        this.addCommentContent = ''
+
+      },
+      submitForm(){
+
+        var timeNow = moment(new Date().getTime()).format('YYYY-MM-DD HH:mm');
+        this.$axios.post('http://120.79.197.164:9285/barter/comment/addComment',{
+          createTime: timeNow,
+          detailComment: this.addCommentContent,
+          easyComment: this.addCommentContent,
+          postId: this.$route.query.postId,
+          status: 1,
+          userId: this.$store.state.user.user.id
+          
+        }).then((response) => {
+          if(response.data.msg == "success"){
+            alert("评论成功！")
+
+          }else{
+            alert("系统出错，请联系管理员！！！")
+
+          }
+
+        })
+
 
       }
 
